@@ -134,13 +134,72 @@ You are experiencing deadlocks in your code. It's true that you have a lot of lo
 
 #### Working with Boolean expressions
 
+| Operator    | Description              | Example          |
+| :---------- | :----------              | :------          |
+| <           | Less Than                | x < 42           |
+| >           | Greater Than             | x > 42           |
+| <=          | Less Than or Equal to    | x <= 42          |
+| >=          | Greater Than or Equal to | x >= 42          |
+| ==          | Equal To                 | x == 42          |
+| !=          | Not Equal To             | x != 42          |
+| ||          | OR                       | x != 42 || x > 2 |
+| &&          | AND                      | x != 42 && x > 1 |
+| ^           | Exclusive OR             | x != 42 ^ x < 10 |
+
+Exclusive OR operator returns true only when exactly one of the operands is true
+
+| Left-Operand | Right-Operand | Result    |
+| :----------  | :----------   | :------   |
+| True         | True          | False     |
+| True         | False         | True      |
+| False        | True          | True      |
+| False        | False         | False     |
+
 #### Making Decisions
 
+| Term                         | Definition      |
+| :----------                  | :----------     |
+| Flow Control statements      | if, while, do while, for, foreach, switch, break, continue, goto, Null-coalescing operator(??), conditional operator(?:) |
+| if                           | enables you to execute a piece of code depending on a specific condition |
+| switch                       | used to simplify complex if statements |
+| break                        | jump statement - used to stop a loop from continuing |
+| continue                     | jump statement - used to continue loop |
+| goto                         | jump statement - avoid using this |
+| Null-coalescing operator(??) | you can use it to provide a default value for nullable value types or for reference types |
+| conditional operator(?:)     | returns one of two values depending on a boolean expression. If true, returns first value, if false, returns second value |
+
 #### Iterating Across Collections
+
+| Term        | Definition      |
+| :---------- | :----------     |
+| while       | executes a piece of code as long as a boolean expression is true |
+| do while    | executes at least once even if expression is false |
+| for         | used to iterate over a collection until a condition is reached |
+| foreach     | used to iterate over a collection where it automatically stores the current item in a loop variable |
+
+#### Thought Experiment
+
+You are updating an old C# 2 console application to WPF C#5 application. The application is used by hotels to keep track of reservations and guests coming and leaving. You are going through the old code base to determine whether there is code that can be easily reused. You notice a couple of things: 
+1. the code uses goto statement to manage flow
+2. there are a lot of long if statements that map user input
+3. the code uses the for loop extensively
+
+| Question         | Answer      |
+| :----------      | :---------- |
+| What is the disadvantage of using goto? How can you avoid using the goto statement?        |  |
+| Which statement can you use to improve the long if statements?                             | Switch |
+| What are the differences between the for and foreach statement? When should you use which? |  |
 
 ### Objective 1.4 Create and implement events and callbacks
 
 #### Understanding Delegates
+
+| Term           | Definition      |
+| :----------    | :----------     |
+| Delegate       | a type that defines a method signature |
+| Multi-Casting  | when you combine delegates together |
+| Covariance     | makes it possible that a method has a return type that is more derived than that defined in the delegate |
+| Contravariance | permits a method that has parameter types that are less derived than those in the delegate type |
 
 #### Using Lambda Expressions
 
