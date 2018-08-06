@@ -4,8 +4,7 @@
 
 ### Objective 1.1 Implement multithreading and asynchronous processing
 
-#### Vocabulary
-##### Understanding Threads
+#### Understanding Threads
 
 | Term                         | Definition    |
 | :------------                |:--------------|
@@ -17,7 +16,7 @@
 | Context Switching            | each thread is allowed a certain amount of time to execute. After this time, the thread is paused and Windows switches to another thread      |
 
 
-##### Using the Thread class 
+#### Using the Thread class 
 
 | Term                          | Definition    |
 | :------------                 |:--------------|
@@ -35,13 +34,13 @@
 | Thread.CurrentThread          | used to ask the system which thread is excuting as well as the information about the thread |
 | ExecutionContext.SuppressFlow | used to disable the behavior of getting thread information to reduce costs on resources |
 
-##### Thread Pools
+#### Thread Pools
 
 | Term        | Definition  |
 | :---------- | :---------- |
 | Thread Pool | a place to send threads when they finished executing in order to reuse them and save time and resources. Works in same way a database connection works. Instead of letting a thread die, you sent it back to the pool where it can be reused when a request comes in |
 
-##### Using Tasks
+#### Using Tasks
 
 | Term           | Definition  |
 | :----------    | :---------- |
@@ -57,26 +56,103 @@
 | Task.WhenAll() | used to schedule a continuation method when all tasks have finished |
 | Task.WaitAny() | used to call a task when a single task is finished |
 
-##### Using the Parallel class
+#### Using the Parallel class
 
 | Term             | Definition  |
 | :----------      | :---------- |
 | Parallelism      | involves taking a certain task and splitting it into a set of related tasks that can be executed concurrently |
 
-##### Using async and await
+#### Using async and await
 
 | Term             | Definition  |
 | :----------      | :---------- |
-|  |  |
+| async | returns a Task object that represents the results of the asynchronous operation. This task can then be continued to prevent thread blockage. Continues even after I/O |
+| await | compiler generated code that checks whether or not your asynchronous operation finished |
 
+#### Exam Tip: 
+When using async and await keep in mind that you should never have a method marked async without any await statements. You should also avoid returning void from an async method except when it's an event handler.s
+
+#### Using Parallel Language Integrated Query (PLINQ)
+
+| Term             | Definition  |
+| :----------      | :---------- |
+| Parallel Language Integrated Query | turn a sequential query into a parallel one |
+| PLINQ Operators | Where, Select, SelectMany, GroupBy, Join, OrderBy, Skip, Take |
+
+#### Using Concurrent Collections
+
+| Term             | Definition  |
+| :----------      | :---------- |
+| BlockingCollection<T> | collection is thread-safe for adding and removing data. Blocks removing until data becomes available. Blocks adding after manually setting upper limit |
+| ConcurrentBag<T> | a bag of items, it allows duplicates and has no order. Add, TryTake, TryPeek |
+| ConcurrentDictionary<T> | stores key value pairs in a thread-safe manner. Use methods to add and remove and update if already exists |
+| ConcurrentQueue<T> | FIFO Enqueue and TryDequeue |
+| ConcurrentStack<T> | LIFO, Push and TryPop/PushRange, TryPopRange |
+
+-----
+
+#### Thought Experiment
+
+You need to build a new application, and you look into multithreading capabilities. Your application consists of a client application that communicates with a web server.
+
+| Question         | Answer      |
+| :----------      | :---------- |
+| Explain how multithreading can help with your client application? |  |
+| What is the difference between CPU and I/O bound operations? |  |
+| Does using multithreading with the TPL offer the same advantages for your server application? |  |
+
+----
 
 ### Objective 1.2 Manage multithreading
 
+#### Synchronizing Resources
+
+When accessing the same data from multiple threads simultaneously, it is important to utilize the lock method in order to properly specify order of execution. However, deadlocking can occur where ThreadA is waiting for ThreadB and ThreadB is currently being stopped by the main thread because it is waiting for ThreadA to finish executing.
+
+System.Threading.Volatile is a class with special Write/Read methods that disable compiler optimizations so you can force the correct order in your code. However, the performance suffers when using this class. 
+
+The Interlocked Class can be used to atomically increment and decrement values.
+
+#### Canceling Tasks
+
+A CancellationToken can be passed into a task which periodically monitors the token to see whether a cancellation is requested.
+
+-----
+
+#### Thought Experiment
+
+You are experiencing deadlocks in your code. It's true that you have a lot of locking statements and you are trying to improve your code to avoid deadlocks.
+
+| Question         | Answer      |
+| :----------      | :---------- |
+| How can you orchestrate your locking code to avoid deadlocks? |  |
+| How can the Interlocked class help you? |  |
+
+----
+
 ### Objective 1.3 Implement program flow
+
+#### Working with Boolean expressions
+
+#### Making Decisions
+
+#### Iterating Across Collections
 
 ### Objective 1.4 Create and implement events and callbacks
 
+#### Understanding Delegates
+
+#### Using Lambda Expressions
+
+#### Using Events
+
 ### Objective 1.5 Implement exception handling
+
+#### Handling Exceptions
+
+#### Throwing Exceptions
+
+#### Creating Custom Exceptions
 
 ## Chapter 2 Create and use types
 
